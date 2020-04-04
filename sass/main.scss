@@ -248,6 +248,18 @@ h6,
             width: 100%;
             padding: 20px 0;
         }
+        .logo-white {
+            display: block;
+        }
+        .logo-black {
+            display: none;
+        }
+    }
+    .nav-mobile {
+        display: none;
+    }
+    .close-menu-mb {
+        display: none;
     }
     .navbar-nav {
         flex-direction: row;
@@ -262,12 +274,16 @@ h6,
                 position: relative;
             }
             .btn-edally-header {
-                background: #fff;
-                color: #000;
+                background: $color_primary;
+                color: $color_white;
                 text-transform: uppercase;
                 padding: 5px 10px;
                 border-radius: 30px;
                 margin-left: 20px;
+                &:hover {
+                    background: transparent !important;
+                    border: 1px solid $color_primary;
+                }
             }
             &:not(:last-child) {
                 a {
@@ -285,6 +301,59 @@ h6,
                 }
             }
         }
+    }
+}
+
+.is-stick {
+    .main-header {
+        position: fixed;
+        animation: slide-down 0.2s;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding: 0;
+        z-index: 1039;
+        transition: all 0.2s;
+        background-color: $color_white;
+        .navbar-nav {
+            .nav-item {
+                a {
+                    color: $color_black;
+                }
+                .btn-edally-header {
+                    background-color: $color_primary;
+                    color: $color_white;
+                    &:hover {
+                        color: $color_primary !important;
+                    }
+                }
+            }
+        }
+        .logo-edally {
+            .logo-white {
+                display: none;
+            }
+            .logo-black {
+                display: block;
+            }
+        }
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        -moz-transform: translateY(-100%)
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        -moz-transform: translateY(0)
     }
 }
 
@@ -425,6 +494,9 @@ h6,
         margin-bottom: 200px;
         span {
             display: block;
+            &.block-mb {
+                display: inline-block;
+            }
         }
     }
     .ingredient {
@@ -586,6 +658,29 @@ h6,
     }
 }
 
+.box-good-price {
+    background: url('../img/bg-good-price.png') center / cover no-repeat;
+    padding: 40px 0;
+    .good-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h3 {
+            color: $color_white;
+            font-size: 34px;
+            line-height: 42px;
+            letter-spacing: 3px;
+        }
+        .btn-good-price {
+            background-color: $color_white;
+            border: 2px solid $color_primary;
+            font-size: 24px;
+            color: $color_primary;
+            border-radius: 30px;
+        }
+    }
+}
+
 .box-user-manual {
     padding: 60px 0;
     background: url('../img/bg-user-manual.png') center / cover no-repeat;
@@ -595,6 +690,9 @@ h6,
         text-align: center;
         font-weight: 300;
         line-height: normal;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 3;
     }
     .zalo-icon {
         text-align: center;
@@ -802,6 +900,8 @@ h6,
     position: relative;
     .cover {
         margin-bottom: -150px;
+        position: relative;
+        z-index: 2;
     }
     .price {
         font-size: 24px;
@@ -849,6 +949,7 @@ h6,
                 border: 0;
                 transform: rotate(90deg);
                 outline: none;
+                background-color: #fff;
                 &:hover {
                     background-color: $color_primary;
                     color: $color_white;
@@ -868,45 +969,171 @@ h6,
     padding: 170px 0 60px;
 }
 
+.box-advisory {
+    padding: 120px 0 60px;
+    background: url('../img/bg-advisory.png') bottom / cover no-repeat;
+    position: relative;
+    .form-advisory {
+        background-color: $color_white;
+        padding: 30px 100px;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, .2);
+        h3 {
+            text-transform: uppercase;
+            font-size: 34px;
+            line-height: 42px;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+        label {
+            margin-bottom: 8px;
+        }
+        .required {
+            label {
+                span {
+                    color: $color_primary;
+                }
+            }
+        }
+        .btn-register {
+            background-color: $color_primary;
+            color: $color_white;
+            border-radius: 30px;
+        }
+    }
+    .bg-doctor {
+        position: absolute;
+        right: 15%;
+        bottom: 0;
+        width: 22%;
+    }
+}
+
+.box-blog {
+    padding: 60px 0;
+    .title-block {
+        text-transform: uppercase;
+        margin-bottom: 30px;
+    }
+    .thumbnail-container {
+        box-shadow: 0 5px 12px rgba(0, 0, 0, .2);
+        border-radius: 8px;
+        a {
+            text-decoration: none;
+        }
+        .blog-image {
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .blog-content {
+            padding: 20px 15px;
+            .title {
+                color: $color_black;
+                text-transform: uppercase;
+                &:hover {
+                    color: $color_primary;
+                }
+            }
+            .author {
+                font-style: italic;
+                font-size: 12px;
+                margin-bottom: 10px;
+                display: block;
+            }
+            .short-content {
+                font-size: 14px;
+                line-height: 22px;
+            }
+            .see-more {
+                color: $color_primary;
+                margin-top: 10px;
+                display: block;
+            }
+        }
+    }
+    .owl-item {
+        padding-bottom: 10px;
+    }
+}
+
 .footer {
     background-color: #424242;
-    padding: 60px 0;
+    padding: 60px 0 30px;
     .title-footer {
         font-size: 24px;
         line-height: 32px;
         position: relative;
-        text-align: center;
         padding-bottom: 10px;
+        margin-bottom: 30px;
         &:after {
             content: '';
             position: absolute;
-            left: 50%;
+            left: 0;
             bottom: 0;
-            transform: translateX(-50%);
             width: 50px;
             height: 3px;
             background-color: $color_primary;
         }
     }
+    .policy {
+        a {
+            display: block;
+            color: $color_white;
+            padding-bottom: 15px;
+            &:hover {
+                color: $color_primary;
+                text-decoration: none;
+            }
+            img {
+                width: 50%;
+            }
+        }
+    }
     p {
         line-height: 24px;
-        text-align: center;
         margin-bottom: 10px;
     }
     .intro-footer {
-        margin: 50px auto 0;
+        margin-bottom: 30px;
         max-width: 250px;
+    }
+    form {
+        max-width: 300px;
+        input {
+            display: block;
+            height: 40px;
+            width: 100%;
+            color: $color_white;
+            background: transparent;
+            border: 1px solid $color_white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 0 15px;
+        }
+        .btn-register {
+            color: $color_white;
+            border: 1px solid $color_white;
+            &:hover {
+                background-color: $color_white !important;
+                color: $color_black !important;
+            }
+        }
     }
     .address {
         max-width: 210px;
         margin: 0 auto;
     }
     .social {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 250px;
-        margin: 50px auto 0;
+        ul {
+            li {
+                display: inline-block;
+                &+li {
+                    margin-left: 5px;
+                }
+            }
+        }
         img {
             width: 40px;
             height: 40px;
@@ -938,4 +1165,41 @@ h6,
             text-align: center;
         }
     }
+    .information {
+        margin-top: 30px;
+        ul {
+            li {
+                display: flex;
+                align-items: flex-start;
+                line-height: 24px;
+                a {
+                    text-decoration: none;
+                    color: $color_white;
+                }
+                img {
+                    width: 20px;
+                    margin-right: 10px;
+                }
+                &+li {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+    .pb-30 {
+        padding-bottom: 30px;
+    }
+    .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, .4);
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.bring-to-front {
+    position: relative;
+    z-index: 100;
 }
