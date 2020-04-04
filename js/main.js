@@ -67,6 +67,18 @@ $(document).ready(function() {
     }
 
     new WOW().init();
+
+    $('.navbar-nav li a').on('click', function() {
+        var anchor = $(this).attr('href').split('#')[1];
+        if (anchor) {
+            if ($('#' + anchor).length > 0) {
+                var target = $('#' + anchor).offset().top;
+
+                $('html,body').animate({ scrollTop: target - 94 }, 1000, 'easeInOutExpo');
+            }
+        }
+        return false;
+    });
 });
 
 (function fixedTopMenu(fixedMenuSelector, fixedMenuDisplayClass, anchorSelector) {
